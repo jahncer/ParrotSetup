@@ -1,0 +1,10 @@
+---
+- name: "Cloning Seclists"
+  become: true
+  git:
+    repo: https://github.com/danielmiessler/SecLists.git
+    dest: /usr/share/seclists
+    
+#- name: Deleting old Seclists
+#  shell: |
+#    rm -rf /usr/share/wordlists/seclists

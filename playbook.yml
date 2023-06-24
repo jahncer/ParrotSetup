@@ -1,0 +1,38 @@
+---
+- name: "Customizing Parrot"
+  hosts: all
+  connection: local
+  #remote_user: vagrant
+  #become_user: root
+  #become: yes
+
+    
+  tasks:    
+    #- name: "Demo Debug"
+     # debug:
+        #var: {{ ansible_env.HOME }}
+      #  msg: {{ ansible_env.HOME }}
+  roles:
+    - role: "roles/install-tools"
+    - role: "roles/customize-browser"
+
+
+
+
+#  tasks:
+#
+#  - name: Update Apt Cache
+#    apt:
+#      update_cache: yes
+#      cache_valid_time: 86400
+#
+#  - name: Update All Packages
+#    apt:
+#      upgrade: safe
+#      cache_valid_time: 86400 
+#
+#  - name: Update All Packages to the latest version
+#    apt:
+#      upgrade: dist
+#      cache_valid_time: 86400
+

@@ -1,0 +1,19 @@
+---
+- name: "Cloning Kerbrute"
+  git:
+    repo: https://github.com/ropnop/kerbrute.git
+    dest: /tmp/kerbrute
+  #become: true  
+- name: "Building Kerbrute"
+  shell: |
+    cd /tmp/kerbrute
+    /usr/local/go/bin/go build
+- name: "Moving Kerbrute to bin"
+  become: true
+  copy:
+    src: /tmp/kerbrute/kerbrute
+    dest: /usr/local/bin/
+    mode: "a+x"
+- name: Deleting old Kerbrute folder
+  shell: |
+    rm -rf /tmp/kerbrute

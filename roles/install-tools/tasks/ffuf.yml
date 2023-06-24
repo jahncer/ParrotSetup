@@ -1,0 +1,5 @@
+---
+- name: "Install ffuf"
+  become: true
+  apt:
+    name: ffuf

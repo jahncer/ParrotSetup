@@ -1,0 +1,19 @@
+---
+- name: "Cloning Nuclei"
+  git:
+    repo: https://github.com/projectdiscovery/nuclei.git
+    dest: /tmp/nuclei
+  #become: true  
+- name: "Building nuclei"
+  shell: |
+    cd /tmp/nuclei/v2/cmd/nuclei/
+    /usr/local/go/bin/go build
+- name: "Moving nuclei to bin"
+  become: true
+  copy:
+    src: /tmp/nuclei/v2/cmd/nuclei/nuclei
+    dest: /usr/local/bin/
+    mode: "a+x"
+- name: Deleting old nuclei folder
+  shell: |
+    rm -rf /tmp/nuclei
